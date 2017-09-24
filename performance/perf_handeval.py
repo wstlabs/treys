@@ -1,4 +1,4 @@
-from card import Card
+from deuces.card import Card
 from hand_evaluator import HandEvaluator
 import time
 import random
@@ -39,5 +39,6 @@ for i in range(len(boards)):
     cumtime += (time.time() - start)
 
 avg = float(cumtime / N)
-print "[*] Pokerhand-eval: Average time per evaluation: %f" % avg
-print "[*] Pokerhand-eval: Evaluations per second = %f" % (1.0 / avg)
+print("[*] Pokerhand-eval: Average time per evaluation: %f" % avg)
+print("[*] Pokerhand-eval: Evaluations per second = %f" % (1.0 / avg))
+
