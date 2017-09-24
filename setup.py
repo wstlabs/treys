@@ -1,18 +1,18 @@
 """
-Deuces: A pure Python poker hand evaluation library
+Treys: A pure Python poker hand evaluation library
 """
 
 from setuptools import setup
 
 setup(
-    name='deuces',
-    version='0.1',
+    name='treys',
+    version='0.0.1',
     description=__doc__,
     long_description=open('README.md').read(),
-    author='Will Drevo',
-    url='https://github.com/worldveil/deuces',
+    author='wstlabs',
+    url='https://github.com/wstlabs/treys',
     license='MIT',
-    packages=['deuces'],
+    packages=['treys'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
