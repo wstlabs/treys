@@ -235,14 +235,6 @@ class LookupTable(object):
                 self.unsuited_lookup[product] = rank
                 rank += 1
 
-    def write_table_to_disk(self, table, filepath):
-        """
-        Writes lookup table to disk
-        """
-        with open(filepath, 'w') as f:
-            for prime_prod, rank in table.items():
-                f.write(str(prime_prod) +","+ str(rank) + '\n')
-
     def get_lexographically_next_bit_sequence(self, bits):
         """
         Bit hack from here:
@@ -260,4 +252,13 @@ class LookupTable(object):
             # XXX math hack - '/' => '//'
             w = t | ((((t & -t) // (w & -w)) >> 1) - 1)
             yield w
+
+    def write_table_to_disk(self, table, filepath):
+        """
+        Writes lookup table to disk
+        """
+        with open(filepath, 'w') as f:
+            for prime_prod, rank in table.items():
+                f.write(str(prime_prod) +","+ str(rank) + '\n')
+
 
