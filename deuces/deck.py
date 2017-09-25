@@ -3,9 +3,9 @@ from .card import Card
 
 class Deck:
     """
-    Class representing a deck. The first time we create, we seed the static 
+    Class representing a deck. The first time we create, we seed the static
     deck with the list of unique card integers. Each object instantiated simply
-    makes a copy of this object and shuffles it. 
+    makes a copy of this object and shuffles it.
     """
     _FULL_DECK = []
 
