@@ -2,6 +2,10 @@ See the file ``Provenance.md`` for information as how, exactly, the files in
 this repo derive from the origianl *deuces* distribution.  All other major  
 changes are noted below, grouped by release version:
 
+v0.0.2
+======
+ - Changed module name to 'treys'
+ - Whitespace cleanup 
 
 v0.0.1
 ======

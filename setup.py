@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name='treys',
-    version='0.0.1',
+    version='0.0.2',
     description=__doc__,
     long_description=open('README.md').read(),
     author='wstlabs',
