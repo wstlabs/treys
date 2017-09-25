@@ -254,9 +254,9 @@ class LookupTable(object):
             yield w
 
 def write_table(table, filepath):
-    """Writes lookup table to a file."""
-    with open(filepath, 'w') as f:
-        for prime_prod, rank in table.items():
-            f.write(str(prime_prod) +","+ str(rank) + '\n')
+    """Writes a lookup table to a file."""
+    with open(filepath, 'wt') as f:
+        for k,v in table.items():
+            f.write(str(k)+","+str(v)+'\n')
 
 
