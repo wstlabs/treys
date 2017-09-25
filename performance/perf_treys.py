@@ -23,8 +23,8 @@ for i in range(len(boards)):
 
 avg = float(cumtime / n)
 print("7 card evaluation:")
-print("[*] Deuces: Average time per evaluation: %f" % avg)
-print("[*] Decues: Evaluations per second = %f" % (1.0 / avg))
+print("[*] Treys: Average time per evaluation: %f" % avg)
+print("[*] Treys: Evaluations per second = %f" % (1.0 / avg))
 
 cumtime = 0.0
 boards, hands = setup(n, 4)
@@ -35,8 +35,8 @@ for i in range(len(boards)):
 
 avg = float(cumtime / n)
 print("6 card evaluation:")
-print("[*] Deuces: Average time per evaluation: %f" % avg)
-print("[*] Decues: Evaluations per second = %f" % (1.0 / avg))
+print("[*] Treys: Average time per evaluation: %f" % avg)
+print("[*] Treys: Evaluations per second = %f" % (1.0 / avg))
 
 cumtime = 0.0
 boards, hands = setup(n, 3)
@@ -47,6 +47,6 @@ for i in range(len(boards)):
 
 avg = float(cumtime / n)
 print("5 card evaluation:")
-print("[*] Deuces: Average time per evaluation: %f" % avg)
-print("[*] Decues: Evaluations per second = %f" % (1.0 / avg))
+print("[*] Treys: Average time per evaluation: %f" % avg)
+print("[*] Treys: Evaluations per second = %f" % (1.0 / avg))
 
