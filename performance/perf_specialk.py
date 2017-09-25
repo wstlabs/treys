@@ -4,12 +4,9 @@ from FiveEval import FiveEval
 import random
 
 def setup(n, m):
-
     hands = []
     boards = []
-
     for i in range(n):
-
         deck = range(52)
         random.shuffle(deck)
         hand = []
@@ -18,15 +15,13 @@ def setup(n, m):
             hand.append(deck.pop(0))
         for j in range(m):
             board.append(deck.pop(0))
-
         hands.append(hand)
         boards.append(board)
-
     return boards, hands
 
 s = SevenEval()
-
 N = 10000
+
 cumtime = 0.0
 boards, hands = setup(N, 5)
 for i in range(len(boards)):

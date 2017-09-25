@@ -65,10 +65,8 @@ class LookupTable(object):
         # create dictionaries
         self.flush_lookup = {}
         self.unsuited_lookup = {}
-
         # create the lookup table in piecewise fashion
-        self.flushes()  # this will call straights and high cards method,
-                        # we reuse some of the bit sequences
+        self.flushes()  # this will call straights and high cards method + reuse some of the bit sequences
         self.multiples()
 
     def flushes(self):
@@ -78,7 +76,6 @@ class LookupTable(object):
         Lookup is done on 13 bit integer (2^13 > 7462):
         xxxbbbbb bbbbbbbb => integer hand index
         """
-
         # straight flushes in rank order
         straight_flushes = [
             7936, # int('0b1111100000000', 2), # royal flush
@@ -92,7 +89,6 @@ class LookupTable(object):
             31,   # int('0b11111', 2),
             4111  # int('0b1000000001111', 2) # 5 high
         ]
-
         # now we'll dynamically generate all the other
         # flushes (including straight flushes)
         flushes = []
@@ -103,7 +99,6 @@ class LookupTable(object):
         for i in range(1277 + len(straight_flushes) - 1): # we also iterate over SFs
             # pull the next flush pattern from our generator
             f = next(gen)
-
             # if this flush matches perfectly any
             # straight flush, do not add it
             notSF = True
@@ -112,7 +107,6 @@ class LookupTable(object):
                 # is same, and we should not add
                 if not f ^ sf:
                     notSF = False
-
             if notSF:
                 flushes.append(f)
 
@@ -146,16 +140,13 @@ class LookupTable(object):
     def straight_and_highcards(self, straights, highcards):
         """
         Unique five card sets. Straights and highcards.
-
         Reuses bit sequences from flush calculations.
         """
         rank = LookupTable.MAX_FLUSH + 1
-
         for s in straights:
             prime_product = Card.prime_product_from_rankbits(s)
             self.unsuited_lookup[prime_product] = rank
             rank += 1
-
         rank = LookupTable.MAX_PAIR + 1
         for h in highcards:
             prime_product = Card.prime_product_from_rankbits(h)
@@ -167,13 +158,10 @@ class LookupTable(object):
         Pair, Two Pair, Three of a Kind, Full House, and 4 of a Kind.
         """
         backwards_ranks = range(len(Card.INT_RANKS) - 1, -1, -1)
-
         # 1) Four of a Kind
         rank = LookupTable.MAX_STRAIGHT_FLUSH + 1
-
         # for each choice of a set of four rank
         for i in backwards_ranks:
-
             # and for each possible kicker rank
             # XXX list hack, was:
             # kickers = backwards_ranks[:]
@@ -189,7 +177,6 @@ class LookupTable(object):
 
         # for each three of a kind
         for i in backwards_ranks:
-
             # and for each choice of pair rank
             # XXX list hack, was:
             # pairranks = backwards_ranks[:]
@@ -205,15 +192,12 @@ class LookupTable(object):
 
         # pick three of one rank
         for r in backwards_ranks:
-
             # XXX list hack, was:
             # kickers = backwards_ranks[:]
             kickers = list(backwards_ranks)
             kickers.remove(r)
             gen = itertools.combinations(kickers, 2)
-
             for kickers in gen:
-
                 c1, c2 = kickers
                 product = Card.PRIMES[r]**3 * Card.PRIMES[c1] * Card.PRIMES[c2]
                 self.unsuited_lookup[product] = rank
@@ -221,10 +205,8 @@ class LookupTable(object):
 
         # 4) Two Pair
         rank = LookupTable.MAX_THREE_OF_A_KIND + 1
-
         tpgen = itertools.combinations(backwards_ranks, 2)
         for tp in tpgen:
-
             pair1, pair2 = tp
             # XXX list hack, was:
             # kickers = backwards_ranks[:]
@@ -232,7 +214,6 @@ class LookupTable(object):
             kickers.remove(pair1)
             kickers.remove(pair2)
             for kicker in kickers:
-
                 product = Card.PRIMES[pair1]**2 * Card.PRIMES[pair2]**2 * Card.PRIMES[kicker]
                 self.unsuited_lookup[product] = rank
                 rank += 1
@@ -242,15 +223,12 @@ class LookupTable(object):
 
         # choose a pair
         for pairrank in backwards_ranks:
-
             # XXX list hack, was:
             # kickers = backwards_ranks[:]
             kickers = list(backwards_ranks)
             kickers.remove(pairrank)
             kgen = itertools.combinations(kickers, 3)
-
             for kickers in kgen:
-
                 k1, k2, k3 = kickers
                 product = Card.PRIMES[pairrank]**2 * Card.PRIMES[k1] \
                         * Card.PRIMES[k2] * Card.PRIMES[k3]

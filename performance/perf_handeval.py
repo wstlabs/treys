@@ -13,9 +13,7 @@ def setup(n):
         for j in range(1, 4 + 1):
             full_deck.append(Card(i, j))
 
-
     for i in range(n):
-
         deck = list(full_deck)
         random.shuffle(deck)
         hand = []
@@ -24,10 +22,8 @@ def setup(n):
             hand.append(deck.pop(0))
         for j in range(5):
             board.append(deck.pop(0))
-
         hands.append(hand)
         boards.append(board)
-
     return boards, hands
 
 N = 10000

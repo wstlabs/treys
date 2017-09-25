@@ -3,19 +3,14 @@ import random
 from treys import Card, Deck, Evaluator
 
 def setup(n, m):
-
     deck = Deck()
-
     boards = []
     hands = []
-
     for i in range(n):
         boards.append(deck.draw(m))
         hands.append(deck.draw(2))
         deck.shuffle()
-
     return boards, hands
-
 
 n = 10000
 cumtime = 0.0
@@ -31,8 +26,6 @@ print("7 card evaluation:")
 print("[*] Deuces: Average time per evaluation: %f" % avg)
 print("[*] Decues: Evaluations per second = %f" % (1.0 / avg))
 
-###
-
 cumtime = 0.0
 boards, hands = setup(n, 4)
 for i in range(len(boards)):
@@ -44,8 +37,6 @@ avg = float(cumtime / n)
 print("6 card evaluation:")
 print("[*] Deuces: Average time per evaluation: %f" % avg)
 print("[*] Decues: Evaluations per second = %f" % (1.0 / avg))
-
-###
 
 cumtime = 0.0
 boards, hands = setup(n, 3)

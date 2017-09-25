@@ -109,11 +109,9 @@ class Card ():
         """
         Expects a list of cards in integer form.
         """
-
         product = 1
         for c in card_ints:
             product *= (c & 0xFF)
-
         return product
 
     @staticmethod
@@ -144,7 +142,6 @@ class Card ():
             # if the ith bit is set
             if rankbits & (1 << i):
                 product *= Card.PRIMES[i]
-
         return product
 
     @staticmethod
@@ -168,7 +165,6 @@ class Card ():
         """
         Prints a single card
         """
-        
         color = False
         try:
             from termcolor import colored
@@ -177,18 +173,14 @@ class Card ():
             color = True
         except ImportError:
             pass
-
         # suit and rank
         suit_int = Card.get_suit_int(card_int)
         rank_int = Card.get_rank_int(card_int)
-
         # if we need to color red
         s = Card.PRETTY_SUITS[suit_int]
         if color and suit_int in Card.PRETTY_REDS:
             s = colored(s, "red")
-
         r = Card.STR_RANKS[rank_int]
-
         return str(r)+str(s)
 
     @staticmethod
@@ -210,6 +202,5 @@ class Card ():
                 output += Card.int_to_pretty_str(c) + ","
             else:
                 output += Card.int_to_pretty_str(c) + " "
-
         print(output)
 

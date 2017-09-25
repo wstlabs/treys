@@ -15,9 +15,7 @@ class Evaluator(object):
     """
 
     def __init__(self):
-
         self.table = LookupTable()
-
         self.hand_size_map = {
             5 : self._five,
             6 : self._six,
@@ -47,8 +45,6 @@ class Evaluator(object):
             handOR = (cards[0] | cards[1] | cards[2] | cards[3] | cards[4]) >> 16
             prime = Card.prime_product_from_rankbits(handOR)
             return self.table.flush_lookup[prime]
-
-        # otherwise
         else:
             prime = Card.prime_product_from_hand(cards)
             return self.table.unsuited_lookup[prime]
@@ -60,14 +56,11 @@ class Evaluator(object):
         and returns this ranking.
         """
         minimum = LookupTable.MAX_HIGH_CARD
-
         all5cardcombobs = itertools.combinations(cards, 5)
         for combo in all5cardcombobs:
-
             score = self._five(combo)
             if score < minimum:
                 minimum = score
-
         return minimum
 
     def _seven(self, cards):
@@ -77,13 +70,11 @@ class Evaluator(object):
         and returns this ranking.
         """
         minimum = LookupTable.MAX_HIGH_CARD
-
         all5cardcombobs = itertools.combinations(cards, 5)
         for combo in all5cardcombobs:
             score = self._five(combo)
             if score < minimum:
                 minimum = score
-
         return minimum
 
     def get_rank_class(self, hr):
@@ -131,21 +122,17 @@ class Evaluator(object):
         Requires that the board is in chronological order for the
         analysis to make sense.
         """
-
         assert len(board) == 5, "Invalid board length"
         for hand in hands:
             assert len(hand) == 2, "Inavlid hand length"
-
         line_length = 10
         stages = ["FLOP", "TURN", "RIVER"]
-
         for i in range(len(stages)):
             line = ("=" * line_length) + " %s " + ("=" * line_length)
             print(line % stages[i])
             best_rank = 7463  # rank one worse than worst hand
             winners = []
             for player, hand in enumerate(hands):
-
                 # evaluate current board position
                 rank = self.evaluate(hand, board[:(i + 3)])
                 rank_class = self.get_rank_class(rank)
@@ -153,7 +140,6 @@ class Evaluator(object):
                 percentage = 1.0 - self.get_five_card_rank_percentage(rank)  # higher better here
                 print("Player %d hand = %s, percentage rank among all hands = %f" % (
                     player + 1, class_string, percentage))
-
                 # detect winner
                 if rank == best_rank:
                     winners.append(player)
