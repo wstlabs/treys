@@ -7,7 +7,7 @@ def setup(n, m):
 
     hands = []
     boards = []
-    
+
     for i in range(n):
 
         deck = range(52)
