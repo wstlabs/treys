@@ -240,7 +240,7 @@ class LookupTable(object):
         Writes lookup table to disk
         """
         with open(filepath, 'w') as f:
-            for prime_prod, rank in table.iteritems():
+            for prime_prod, rank in table.items():
                 f.write(str(prime_prod) +","+ str(rank) + '\n')
 
     def get_lexographically_next_bit_sequence(self, bits):
