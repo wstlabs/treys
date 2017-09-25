@@ -253,10 +253,8 @@ class LookupTable(object):
             w = t | ((((t & -t) // (w & -w)) >> 1) - 1)
             yield w
 
-def write_table_to_disk(table, filepath):
-    """
-    Writes lookup table to disk
-    """
+def write_table(table, filepath):
+    """Writes lookup table to a file."""
     with open(filepath, 'w') as f:
         for prime_prod, rank in table.items():
             f.write(str(prime_prod) +","+ str(rank) + '\n')
