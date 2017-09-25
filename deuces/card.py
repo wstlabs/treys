@@ -42,10 +42,10 @@ class Card ():
 
     # for pretty printing
     PRETTY_SUITS = {
-        1 : u"\u2660".encode('utf-8'), # spades
-        2 : u"\u2764".encode('utf-8'), # hearts
-        4 : u"\u2666".encode('utf-8'), # diamonds
-        8 : u"\u2663".encode('utf-8') # clubs
+        1 : "\u2660", # spades
+        2 : "\u2764", # hearts
+        4 : "\u2666", # diamonds
+        8 : "\u2663"  # clubs
     }
 
      # hearts and diamonds
