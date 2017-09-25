@@ -253,11 +253,11 @@ class LookupTable(object):
         """
         t = (bits | (bits - 1)) + 1
         # XXX math hack - '/' => '//'
-        next = t | ((((t & -t) // (bits & -bits)) >> 1) - 1)
-        yield next
+        w = t | ((((t & -t) // (bits & -bits)) >> 1) - 1)
+        yield w
         while True:
-            t = (next | (next - 1)) + 1
+            t = (w | (w - 1)) + 1
             # XXX math hack - '/' => '//'
-            next = t | ((((t & -t) // (next & -next)) >> 1) - 1)
-            yield next
+            w = t | ((((t & -t) // (w & -w)) >> 1) - 1)
+            yield w
 
