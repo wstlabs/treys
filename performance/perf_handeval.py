@@ -1,4 +1,4 @@
-from deuces.card import Card
+from treys.card import Card
 from hand_evaluator import HandEvaluator
 import time
 import random
