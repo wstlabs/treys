@@ -55,3 +55,4 @@ print("Player 2 hand rank = %d (%s)" % (p2_score, evaluator.class_to_string(p2_c
 # or just a summary of the entire hand
 hands = [player1_hand, player2_hand]
 evaluator.hand_summary(board, hands)
+
