@@ -243,6 +243,7 @@ class LookupTable(object):
         Generator even does this in poker order rank
         so no need to sort when done! Perfect.
         """
+        # XXX tidy
         t = (bits | (bits - 1)) + 1
         # XXX math hack - '/' => '//'
         w = t | ((((t & -t) // (bits & -bits)) >> 1) - 1)
