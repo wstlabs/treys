@@ -92,7 +92,7 @@ class LookupTable(object):
         # now we'll dynamically generate all the other
         # flushes (including straight flushes)
         flushes = []
-        gen = self.get_lexographically_next_bit_sequence(int('0b11111', 2))
+        gen = self.next_word(int('0b11111', 2))
 
         # 1277 = number of high cards
         # 1277 + len(str_flushes) is number of hands with all cards unique rank
@@ -235,8 +235,10 @@ class LookupTable(object):
                 self.unsuited_lookup[product] = rank
                 rank += 1
 
-    def get_lexographically_next_bit_sequence(self, bits):
+    def next_word(self, bits):
         """
+        Gets the so-called "next lexographic bit sequence" from a starting word :bits
+
         Bit hack from here:
         http://www-graphics.stanford.edu/~seander/bithacks.html#NextBitPermutation
 
