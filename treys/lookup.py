@@ -92,7 +92,7 @@ class LookupTable(object):
         # now we'll dynamically generate all the other
         # flushes (including straight flushes)
         flushes = []
-        gen = self.next_word(int('0b11111', 2))
+        gen = next_word(int('0b11111', 2))
 
         # 1277 = number of high cards
         # 1277 + len(str_flushes) is number of hands with all cards unique rank
@@ -235,24 +235,25 @@ class LookupTable(object):
                 self.unsuited_lookup[product] = rank
                 rank += 1
 
-    def next_word(self, bits):
-        """
-        Gets the so-called "next lexographic bit sequence" from a starting word :bits
+def next_word(bits):
+    """
+    Gets the so-called "next lexographic bit sequence" from a starting word :bits
 
-        Bit hack from here:
-        http://www-graphics.stanford.edu/~seander/bithacks.html#NextBitPermutation
+    Bit hack from here:
 
-        Generator even does this in poker order rank
-        so no need to sort when done! Perfect.
-        """
-        # XXX tidy
-        t = (bits | (bits - 1)) + 1
+      http://www-graphics.stanford.edu/~seander/bithacks.html#NextBitPermutation
+
+    Generator even does this in poker order rank
+    so no need to sort when done! Perfect.
+    """
+    # XXX tidy
+    t = (bits | (bits - 1)) + 1
+    # XXX math hack - '/' => '//'
+    w = t | ((((t & -t) // (bits & -bits)) >> 1) - 1)
+    yield w
+    while True:
+        t = (w | (w - 1)) + 1
         # XXX math hack - '/' => '//'
-        w = t | ((((t & -t) // (bits & -bits)) >> 1) - 1)
+        w = t | ((((t & -t) // (w & -w)) >> 1) - 1)
         yield w
-        while True:
-            t = (w | (w - 1)) + 1
-            # XXX math hack - '/' => '//'
-            w = t | ((((t & -t) // (w & -w)) >> 1) - 1)
-            yield w
 
