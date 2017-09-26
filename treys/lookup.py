@@ -238,13 +238,11 @@ class LookupTable(object):
 def next_word(bits):
     """
     Gets the so-called "next lexographic bit sequence" from a starting word :bits
-
     Bit hack from here:
 
       http://www-graphics.stanford.edu/~seander/bithacks.html#NextBitPermutation
 
-    Generator even does this in poker order rank
-    so no need to sort when done! Perfect.
+    Generator even does this in poker order rank so no need to sort when done! Perfect.
     """
     # XXX tidy
     t = (bits | (bits - 1)) + 1
