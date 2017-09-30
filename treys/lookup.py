@@ -1,4 +1,5 @@
 import itertools
+from collections import OrderedDict
 from .card import Card
 
 class LookupTable(object):
@@ -65,8 +66,8 @@ class LookupTable(object):
         """
         Builds member tables from scratch
         """
-        self.flush = {}
-        self.unsuited = {}
+        self.flush = OrderedDict()
+        self.unsuited = OrderedDict()
         self.build_flushes()  # this will call straights and high cards method + reuse some of the bit sequences
         self.build_multiples()
 
