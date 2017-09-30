@@ -1,4 +1,5 @@
 from treys import Card, Evaluator, Deck
+from treys.card import pretty
 
 # create a card
 card = Card.new('Qh')
@@ -16,7 +17,8 @@ hand = [
 ]
 
 # pretty print cards to console
-Card.print_pretty_cards(board + hand)
+# Card.print_pretty_cards(board + hand)
+print(pretty(board+hand))
 
 # create an evaluator
 evaluator = Evaluator()
@@ -33,13 +35,16 @@ player1_hand = deck.draw(2)
 player2_hand = deck.draw(2)
 
 print("The board:")
-Card.print_pretty_cards(board)
+# Card.print_pretty_cards(board)
+print(pretty(board))
 
 print("Player 1's cards:")
-Card.print_pretty_cards(player1_hand)
+# Card.print_pretty_cards(player1_hand)
+print(pretty(player1_hand))
 
 print("Player 2's cards:")
-Card.print_pretty_cards(player2_hand)
+# Card.print_pretty_cards(player2_hand)
+print(pretty(player2_hand))
 
 p1_score = evaluator.evaluate(board, player1_hand)
 p2_score = evaluator.evaluate(board, player2_hand)

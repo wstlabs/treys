@@ -183,24 +183,32 @@ class Card ():
         r = Card.STR_RANKS[rank_int]
         return str(r)+str(s)
 
-    @staticmethod
-    def print_pretty_card(card_int):
-        """
-        Expects a single integer as input
-        """
-        print(Card.int_to_pretty_str(card_int))
+def pretty(x):
+    if isinstance(x,int):
+        return _pretty_card(x)
+    elif isinstance(x,list):
+        return _pretty_cards(x)
+    else:
+        raise TypeError("need a pure card, or a list of cards")
 
-    @staticmethod
-    def print_pretty_cards(card_ints):
-        """
-        Expects a list of cards in integer form.
-        """
-        output = " "
-        for i in range(len(card_ints)):
-            c = card_ints[i]
-            if i != len(card_ints) - 1:
-                output += Card.int_to_pretty_str(c) + ","
-            else:
-                output += Card.int_to_pretty_str(c) + " "
-        print(output)
+def _pretty_card(card_int):
+    """
+    Expects a single integer as input
+    """
+    # print(Card.int_to_pretty_str(card_int))
+    return Card.int_to_pretty_str(card_int)
+
+def _pretty_cards(card_ints):
+    """
+    Expects a list of cards in integer form.
+    """
+    output = " "
+    for i in range(len(card_ints)):
+        c = card_ints[i]
+        if i != len(card_ints) - 1:
+            output += Card.int_to_pretty_str(c) + ","
+        else:
+            output += Card.int_to_pretty_str(c) + " "
+    # print(output)
+    return output
 
