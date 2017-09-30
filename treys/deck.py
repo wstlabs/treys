@@ -26,7 +26,6 @@ class Deck:
         return cards
 
     def __str__(self):
-        # return Card.print_pretty_cards(self.cards)
         return pretty(self.cards)
 
     @staticmethod

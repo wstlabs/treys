@@ -195,7 +195,6 @@ def _pretty_card(card_int):
     """
     Expects a single integer as input
     """
-    # print(Card.int_to_pretty_str(card_int))
     return Card.int_to_pretty_str(card_int)
 
 def _pretty_cards(card_ints):
@@ -209,6 +208,5 @@ def _pretty_cards(card_ints):
             output += Card.int_to_pretty_str(c) + ","
         else:
             output += Card.int_to_pretty_str(c) + " "
-    # print(output)
     return output
 
