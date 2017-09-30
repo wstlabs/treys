@@ -66,10 +66,10 @@ class LookupTable(object):
         self.flush = {}
         self.unsuited = {}
         # create the lookup table in piecewise fashion
-        self.flushes()  # this will call straights and high cards method + reuse some of the bit sequences
-        self.multiples()
+        self.build_flushes()  # this will call straights and high cards method + reuse some of the bit sequences
+        self.build_multiples()
 
-    def flushes(self):
+    def build_flushes(self):
         """
         Straight flushes and flushes.
 
@@ -135,9 +135,9 @@ class LookupTable(object):
         # we can reuse these bit sequences for straights
         # and high cards since they are inherently related
         # and differ only by context 
-        self.straight_and_highcards(straight_flushes, flushes)
+        self.build_straight_and_highcards(straight_flushes, flushes)
 
-    def straight_and_highcards(self, straights, highcards):
+    def build_straight_and_highcards(self, straights, highcards):
         """
         Unique five card sets. Straights and highcards.
         Reuses bit sequences from flush calculations.
@@ -153,7 +153,7 @@ class LookupTable(object):
             self.unsuited[prime_product] = rank
             rank += 1
 
-    def multiples(self):
+    def build_multiples(self):
         """
         Pair, Two Pair, Three of a Kind, Full House, and 4 of a Kind.
         """
