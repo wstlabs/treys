@@ -237,6 +237,7 @@ class LookupTable(object):
                 self.unsuited[product] = rank
                 rank += 1
 
+
 def next_word(bits):
     """
     Gets the so-called "next lexographic bit sequence" from a starting word :bits
