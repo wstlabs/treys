@@ -65,10 +65,8 @@ class LookupTable(object):
         """
         Builds member tables from scratch
         """
-        # create dictionaries
         self.flush = {}
         self.unsuited = {}
-        # create the lookup table in piecewise fashion
         self.build_flushes()  # this will call straights and high cards method + reuse some of the bit sequences
         self.build_multiples()
 
