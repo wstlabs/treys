@@ -15,7 +15,7 @@ class Evaluator(object):
     """
 
     def __init__(self):
-        self.table = LookupTable()
+        self.lookup = LookupTable()
         self.hand_size_map = {
             5 : self._five,
             6 : self._six,
@@ -44,10 +44,10 @@ class Evaluator(object):
         if cards[0] & cards[1] & cards[2] & cards[3] & cards[4] & 0xF000:
             handOR = (cards[0] | cards[1] | cards[2] | cards[3] | cards[4]) >> 16
             prime = Card.prime_product_from_rankbits(handOR)
-            return self.table.flush_lookup[prime]
+            return self.lookup.flush_lookup[prime]
         else:
             prime = Card.prime_product_from_hand(cards)
-            return self.table.unsuited_lookup[prime]
+            return self.lookup.unsuited_lookup[prime]
 
     def _six(self, cards):
         """
