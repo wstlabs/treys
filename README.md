@@ -2,7 +2,7 @@ Treys
 =====
 
 *Treys* is a Python 3 port of the the fine *deuces* library for fast and memory-efficient poker hand evalution, 
-originally in Python 2.7 and due to Will Drevo.  It was last modified in 2016 and currently resides here::
+originally in Python 2.7 and due to Will Drevo.  The latter was last modified in 2016 and currently resides here::
 
    https://github.com/worldveil/deuces
 
