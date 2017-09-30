@@ -63,8 +63,8 @@ class LookupTable(object):
         Calculates lookup tables
         """
         # create dictionaries
-        self.flush_lookup = {}
-        self.unsuited_lookup = {}
+        self.flush = {}
+        self.unsuited = {}
         # create the lookup table in piecewise fashion
         self.flushes()  # this will call straights and high cards method + reuse some of the bit sequences
         self.multiples()
@@ -121,7 +121,7 @@ class LookupTable(object):
         rank = 1
         for sf in straight_flushes:
             prime_product = Card.prime_product_from_rankbits(sf)
-            self.flush_lookup[prime_product] = rank
+            self.flush[prime_product] = rank
             rank += 1
 
         # we start the counting for flushes on max full house, which
@@ -129,7 +129,7 @@ class LookupTable(object):
         rank = LookupTable.MAX_FULL_HOUSE + 1
         for f in flushes:
             prime_product = Card.prime_product_from_rankbits(f)
-            self.flush_lookup[prime_product] = rank
+            self.flush[prime_product] = rank
             rank += 1
 
         # we can reuse these bit sequences for straights
@@ -145,12 +145,12 @@ class LookupTable(object):
         rank = LookupTable.MAX_FLUSH + 1
         for s in straights:
             prime_product = Card.prime_product_from_rankbits(s)
-            self.unsuited_lookup[prime_product] = rank
+            self.unsuited[prime_product] = rank
             rank += 1
         rank = LookupTable.MAX_PAIR + 1
         for h in highcards:
             prime_product = Card.prime_product_from_rankbits(h)
-            self.unsuited_lookup[prime_product] = rank
+            self.unsuited[prime_product] = rank
             rank += 1
 
     def multiples(self):
@@ -169,7 +169,7 @@ class LookupTable(object):
             kickers.remove(i)
             for k in kickers:
                 product = Card.PRIMES[i]**4 * Card.PRIMES[k]
-                self.unsuited_lookup[product] = rank
+                self.unsuited[product] = rank
                 rank += 1
 
         # 2) Full House
@@ -184,7 +184,7 @@ class LookupTable(object):
             pairranks.remove(i)
             for pr in pairranks:
                 product = Card.PRIMES[i]**3 * Card.PRIMES[pr]**2
-                self.unsuited_lookup[product] = rank
+                self.unsuited[product] = rank
                 rank += 1
 
         # 3) Three of a Kind
@@ -200,7 +200,7 @@ class LookupTable(object):
             for kickers in gen:
                 c1, c2 = kickers
                 product = Card.PRIMES[r]**3 * Card.PRIMES[c1] * Card.PRIMES[c2]
-                self.unsuited_lookup[product] = rank
+                self.unsuited[product] = rank
                 rank += 1
 
         # 4) Two Pair
@@ -215,7 +215,7 @@ class LookupTable(object):
             kickers.remove(pair2)
             for kicker in kickers:
                 product = Card.PRIMES[pair1]**2 * Card.PRIMES[pair2]**2 * Card.PRIMES[kicker]
-                self.unsuited_lookup[product] = rank
+                self.unsuited[product] = rank
                 rank += 1
 
         # 5) Pair
@@ -232,7 +232,7 @@ class LookupTable(object):
                 k1, k2, k3 = kickers
                 product = Card.PRIMES[pairrank]**2 * Card.PRIMES[k1] \
                         * Card.PRIMES[k2] * Card.PRIMES[k3]
-                self.unsuited_lookup[product] = rank
+                self.unsuited[product] = rank
                 rank += 1
 
 def next_word(bits):
