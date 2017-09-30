@@ -59,8 +59,11 @@ class LookupTable(object):
     }
 
     def __init__(self):
+        self.build()
+
+    def build(self):
         """
-        Calculates lookup tables
+        Builds member tables from scratch
         """
         # create dictionaries
         self.flush = {}
