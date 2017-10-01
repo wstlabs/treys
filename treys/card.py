@@ -1,5 +1,5 @@
 # hearts and diamonds
-REDS = [2, 4]
+REDS = set([2, 4])
 
 class Card ():
     """
