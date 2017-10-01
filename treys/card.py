@@ -148,7 +148,7 @@ class Card ():
 # The next two comment lines were from the original 'deuces':
 # for mac, linux: http://pypi.python.org/pypi/termcolor
 # can use for windows: http://pypi.python.org/pypi/colorama
-def resolve_colored():
+def _resolve_colored():
     """
     This bit of logic was carved out of the original pretty-print function to
     make the latter a bit more understandable.  The description might be:
@@ -171,7 +171,7 @@ def _pretty_card(card):
     suit = Card.get_suit_int(card)
     rank = Card.get_rank_int(card)
     s = Card.PRETTY_SUITS[suit]
-    _colored = resolve_colored()
+    _colored = _resolve_colored()
     if _colored and suit in Card.PRETTY_REDS:
         s = _colored(s, "red")
     r = Card.STR_RANKS[rank]
