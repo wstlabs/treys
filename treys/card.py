@@ -160,21 +160,34 @@ class Card ():
         output.reverse()
         return "".join(output)
 
-def _pretty_card(card):
-    """Expects a card in integer form, and returns a nice string for pretty-printing"""
-    color = False
+# for mac, linux: http://pypi.python.org/pypi/termcolor
+# can use for windows: http://pypi.python.org/pypi/colorama
+def colorize():
+    """
+    This bit of logic was carved out of the original pretty-print function to
+    make the latter a bit more understandable.  The description might be:
+    'If termcolor is available, return the impored 'colored' method, whose
+    existence is also used as a boolean flag in the calling context as to
+    the availability of the termcolor package.'
+
+    Which is a bit muddled, by my tastes.  Basically we need to rethink how
+    we manage this colorization business. But for now, let's at least keep
+    this try-catch business in a separate method.
+    """
     try:
         from termcolor import colored
-        ### for mac, linux: http://pypi.python.org/pypi/termcolor
-        ### can use for windows: http://pypi.python.org/pypi/colorama
-        color = True
+        return colored
     except ImportError:
         pass
+
+def _pretty_card(card):
+    """Expects a card in integer form, and returns a nice string for pretty-printing"""
     suit = Card.get_suit_int(card)
     rank = Card.get_rank_int(card)
     s = Card.PRETTY_SUITS[suit]
-    if color and suit in Card.PRETTY_REDS:
-        s = colored(s, "red")
+    _colored = colorize()
+    if _colored and suit in Card.PRETTY_REDS:
+        s = _colored(s, "red")
     r = Card.STR_RANKS[rank]
     return str(r)+str(s)
 
