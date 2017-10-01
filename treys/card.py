@@ -49,7 +49,7 @@ class Card ():
     }
 
      # hearts and diamonds
-    PRETTY_REDS = [2, 4]
+    REDS = [2, 4]
 
     @staticmethod
     def new(string):
@@ -172,7 +172,7 @@ def _pretty_card(card):
     rank = Card.get_rank_int(card)
     s = Card.PRETTY_SUITS[suit]
     _colored = _resolve_colored()
-    if _colored and suit in Card.PRETTY_REDS:
+    if _colored and suit in Card.REDS:
         s = _colored(s, "red")
     r = Card.STR_RANKS[rank]
     return str(r)+str(s)
