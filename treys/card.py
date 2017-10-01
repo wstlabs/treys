@@ -160,6 +160,7 @@ class Card ():
         output.reverse()
         return "".join(output)
 
+# The next two comment lines were from the original 'deuces':
 # for mac, linux: http://pypi.python.org/pypi/termcolor
 # can use for windows: http://pypi.python.org/pypi/colorama
 def colorize():
