@@ -182,14 +182,6 @@ def int_to_pretty_str(card_int):
     r = Card.STR_RANKS[rank_int]
     return str(r)+str(s)
 
-def pretty(x):
-    if isinstance(x,int):
-        return _pretty_card(x)
-    elif isinstance(x,list):
-        return _pretty_list(x)
-    else:
-        raise TypeError("need a pure card, or a list of cards")
-
 def _pretty_card(card):
     """Expects a single card in integer form"""
     return int_to_pretty_str(card)
@@ -197,4 +189,12 @@ def _pretty_card(card):
 def _pretty_list(cards):
     """Expects a list (or iterable) of cards in integer form."""
     return ",".join(_pretty_card(c) for c in cards)
+
+def pretty(x):
+    if isinstance(x,int):
+        return _pretty_card(x)
+    elif isinstance(x,list):
+        return _pretty_list(x)
+    else:
+        raise TypeError("need a pure card, or a list of cards")
 
