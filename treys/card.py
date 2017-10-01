@@ -160,28 +160,27 @@ class Card ():
         output.reverse()
         return "".join(output)
 
-    @staticmethod
-    def int_to_pretty_str(card_int):
-        """
-        Prints a single card
-        """
-        color = False
-        try:
-            from termcolor import colored
-            ### for mac, linux: http://pypi.python.org/pypi/termcolor
-            ### can use for windows: http://pypi.python.org/pypi/colorama
-            color = True
-        except ImportError:
-            pass
-        # suit and rank
-        suit_int = Card.get_suit_int(card_int)
-        rank_int = Card.get_rank_int(card_int)
-        # if we need to color red
-        s = Card.PRETTY_SUITS[suit_int]
-        if color and suit_int in Card.PRETTY_REDS:
-            s = colored(s, "red")
-        r = Card.STR_RANKS[rank_int]
-        return str(r)+str(s)
+def int_to_pretty_str(card_int):
+    """
+    Prints a single card
+    """
+    color = False
+    try:
+        from termcolor import colored
+        ### for mac, linux: http://pypi.python.org/pypi/termcolor
+        ### can use for windows: http://pypi.python.org/pypi/colorama
+        color = True
+    except ImportError:
+        pass
+    # suit and rank
+    suit_int = Card.get_suit_int(card_int)
+    rank_int = Card.get_rank_int(card_int)
+    # if we need to color red
+    s = Card.PRETTY_SUITS[suit_int]
+    if color and suit_int in Card.PRETTY_REDS:
+        s = colored(s, "red")
+    r = Card.STR_RANKS[rank_int]
+    return str(r)+str(s)
 
 def pretty(x):
     if isinstance(x,int):
@@ -193,7 +192,7 @@ def pretty(x):
 
 def _pretty_card(card):
     """Expects a single card in integer form"""
-    return Card.int_to_pretty_str(card)
+    return int_to_pretty_str(card)
 
 def _pretty_list(cards):
     """Expects a list (or iterable) of cards in integer form."""
