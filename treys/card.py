@@ -181,7 +181,7 @@ def colorize():
         pass
 
 def _pretty_card(card):
-    """Expects a card in integer form, and returns a nice string for pretty-printing"""
+    """Expects a card in integer form, and returns a nice string for pretty-printing."""
     suit = Card.get_suit_int(card)
     rank = Card.get_rank_int(card)
     s = Card.PRETTY_SUITS[suit]
@@ -192,14 +192,16 @@ def _pretty_card(card):
     return str(r)+str(s)
 
 def _pretty_list(cards):
-    """Expects a list (or iterable) of cards in integer form."""
+    """Expects a list (or iterable) of cards in integer form, and returns a nice string for pretty-printing"""
     return ",".join(_pretty_card(c) for c in cards)
 
 def pretty(x):
+    """Returns a nice string representation for pretty printing, expecting either a single card
+    (in integer form) or a list of cards."""
     if isinstance(x,int):
         return _pretty_card(x)
     elif isinstance(x,list):
         return _pretty_list(x)
     else:
-        raise TypeError("need a pure card, or a list of cards")
+        raise TypeError("need a single (integer) card, or a list of cards")
 
