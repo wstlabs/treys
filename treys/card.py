@@ -187,26 +187,15 @@ def pretty(x):
     if isinstance(x,int):
         return _pretty_card(x)
     elif isinstance(x,list):
-        return _pretty_cards(x)
+        return _pretty_list(x)
     else:
         raise TypeError("need a pure card, or a list of cards")
 
-def _pretty_card(card_int):
-    """
-    Expects a single integer as input
-    """
-    return Card.int_to_pretty_str(card_int)
+def _pretty_card(card):
+    """Expects a single card in integer form"""
+    return Card.int_to_pretty_str(card)
 
-def _pretty_cards(card_ints):
-    """
-    Expects a list of cards in integer form.
-    """
-    output = " "
-    for i in range(len(card_ints)):
-        c = card_ints[i]
-        if i != len(card_ints) - 1:
-            output += Card.int_to_pretty_str(c) + ","
-        else:
-            output += Card.int_to_pretty_str(c) + " "
-    return output
+def _pretty_list(cards):
+    """Expects a list (or iterable) of cards in integer form."""
+    return ",".join(_pretty_card(c) for c in cards)
 
