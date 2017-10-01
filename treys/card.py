@@ -145,12 +145,12 @@ class Card ():
         return product
 
 
-def int_to_binary(card_int):
+def int_to_binary(card):
     """
     For debugging purposes. Displays the binary number as a
     human readable string in groups of four digits.
     """
-    bstr = bin(card_int)[2:][::-1] # chop off the 0b and THEN reverse string
+    bstr = bin(card)[2:][::-1] # chop off the 0b and THEN reverse string
     output = list("".join(["0000" +"\t"] * 7) +"0000")
 
     for i in range(len(bstr)):
