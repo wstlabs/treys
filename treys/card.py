@@ -160,7 +160,7 @@ class Card ():
         output.reverse()
         return "".join(output)
 
-def int_to_pretty_str(card_int):
+def int_to_pretty_str(card):
     """
     Prints a single card
     """
@@ -173,8 +173,8 @@ def int_to_pretty_str(card_int):
     except ImportError:
         pass
     # suit and rank
-    suit_int = Card.get_suit_int(card_int)
-    rank_int = Card.get_rank_int(card_int)
+    suit_int = Card.get_suit_int(card)
+    rank_int = Card.get_rank_int(card)
     # if we need to color red
     s = Card.PRETTY_SUITS[suit_int]
     if color and suit_int in Card.PRETTY_REDS:
