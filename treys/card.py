@@ -1,5 +1,5 @@
 
-# unicode suit chars for 
+# unicode suit chars for pretty printing 
 PRETTY_SUITS = {
     1 : "\u2660", # spades
     2 : "\u2764", # hearts
