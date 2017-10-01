@@ -160,7 +160,7 @@ class Card ():
         output.reverse()
         return "".join(output)
 
-def int_to_pretty_str(card):
+def _pretty_card(card):
     """Expects a card in integer form, and returns a nice string for pretty-printing"""
     color = False
     try:
@@ -170,19 +170,13 @@ def int_to_pretty_str(card):
         color = True
     except ImportError:
         pass
-    # suit and rank
     suit_int = Card.get_suit_int(card)
     rank_int = Card.get_rank_int(card)
-    # if we need to color red
     s = Card.PRETTY_SUITS[suit_int]
     if color and suit_int in Card.PRETTY_REDS:
         s = colored(s, "red")
     r = Card.STR_RANKS[rank_int]
     return str(r)+str(s)
-
-def _pretty_card(card):
-    """Expects a single card in integer form"""
-    return int_to_pretty_str(card)
 
 def _pretty_list(cards):
     """Expects a list (or iterable) of cards in integer form."""
