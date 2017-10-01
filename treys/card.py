@@ -170,12 +170,12 @@ def _pretty_card(card):
         color = True
     except ImportError:
         pass
-    suit_int = Card.get_suit_int(card)
-    rank_int = Card.get_rank_int(card)
-    s = Card.PRETTY_SUITS[suit_int]
-    if color and suit_int in Card.PRETTY_REDS:
+    suit = Card.get_suit_int(card)
+    rank = Card.get_rank_int(card)
+    s = Card.PRETTY_SUITS[suit]
+    if color and suit in Card.PRETTY_REDS:
         s = colored(s, "red")
-    r = Card.STR_RANKS[rank_int]
+    r = Card.STR_RANKS[rank]
     return str(r)+str(s)
 
 def _pretty_list(cards):
