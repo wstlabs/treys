@@ -191,7 +191,10 @@ def pretty(x):
     else:
         raise TypeError("need a single (integer) card, or a list of cards")
 
-def int_to_binary(card):
+
+# DEPRECATED
+# From the original 'deuces', but never used or tested.
+def __int_to_binary(card):
     """
     For debugging purposes. Displays the binary number as a
     human readable string in groups of four digits.
