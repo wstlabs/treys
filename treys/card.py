@@ -161,9 +161,7 @@ class Card ():
         return "".join(output)
 
 def int_to_pretty_str(card):
-    """
-    Prints a single card
-    """
+    """Expects a card in integer form, and returns a nice string for pretty-printing"""
     color = False
     try:
         from termcolor import colored
