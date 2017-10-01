@@ -1,6 +1,6 @@
 
 # unicode suit chars for pretty printing 
-PRETTY_SUITS = {
+PRETTY = {
     1 : "\u2660", # spades
     2 : "\u2764", # hearts
     4 : "\u2666", # diamonds
@@ -172,7 +172,7 @@ def _pretty_card(card):
     """Expects a card in integer form, and returns a nice string for pretty-printing."""
     suit = Card.get_suit_int(card)
     rank = Card.get_rank_int(card)
-    s = PRETTY_SUITS[suit]
+    s = PRETTY[suit]
     _colored = _resolve_colored()
     if _colored and suit in REDS:
         s = _colored(s, "red")
