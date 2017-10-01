@@ -144,21 +144,21 @@ class Card ():
                 product *= Card.PRIMES[i]
         return product
 
-    @staticmethod
-    def int_to_binary(card_int):
-        """
-        For debugging purposes. Displays the binary number as a
-        human readable string in groups of four digits.
-        """
-        bstr = bin(card_int)[2:][::-1] # chop off the 0b and THEN reverse string
-        output = list("".join(["0000" +"\t"] * 7) +"0000")
 
-        for i in range(len(bstr)):
-            output[i + int(i/4)] = bstr[i]
+def int_to_binary(card_int):
+    """
+    For debugging purposes. Displays the binary number as a
+    human readable string in groups of four digits.
+    """
+    bstr = bin(card_int)[2:][::-1] # chop off the 0b and THEN reverse string
+    output = list("".join(["0000" +"\t"] * 7) +"0000")
 
-        # output the string to console
-        output.reverse()
-        return "".join(output)
+    for i in range(len(bstr)):
+        output[i + int(i/4)] = bstr[i]
+
+    # output the string to console
+    output.reverse()
+    return "".join(output)
 
 # The next two comment lines were from the original 'deuces':
 # for mac, linux: http://pypi.python.org/pypi/termcolor
