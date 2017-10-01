@@ -1,3 +1,6 @@
+# hearts and diamonds
+REDS = [2, 4]
+
 class Card ():
     """
     Static class that handles cards. We represent cards as 32-bit integers, so
@@ -48,8 +51,6 @@ class Card ():
         8 : "\u2663"  # clubs
     }
 
-     # hearts and diamonds
-    REDS = [2, 4]
 
     @staticmethod
     def new(string):
@@ -172,7 +173,7 @@ def _pretty_card(card):
     rank = Card.get_rank_int(card)
     s = Card.PRETTY_SUITS[suit]
     _colored = _resolve_colored()
-    if _colored and suit in Card.REDS:
+    if _colored and suit in REDS:
         s = _colored(s, "red")
     r = Card.STR_RANKS[rank]
     return str(r)+str(s)
