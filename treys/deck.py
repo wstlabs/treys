@@ -32,10 +32,7 @@ class Deck:
             raise ValueError("must draw a positive number of cards")
         if k > len(self):
             raise ValueError("requested draw size exceeds deck size")
-        cards = []
-        for i in range(k):
-            cards.append(self.pick())
-        return cards
+        return [self.cards.pop() for _ in range(k)]
 
 
     @staticmethod
