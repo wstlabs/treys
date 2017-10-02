@@ -27,11 +27,11 @@ class Deck:
             raise RuntimeError("can't pick from an empty deck")
         return self.cards.pop()
 
-    def draw(self, n=1):
-        if n == 1:
-            return self.cards.pop(0)
+    def draw(self, k):
+        if k < 1:
+            raise ValueError("must draw a positive number of cards")
         cards = []
-        for i in range(n):
+        for i in range(k):
             cards.append(self.pick())
         return cards
 
