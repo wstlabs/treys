@@ -18,8 +18,7 @@ PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
 CHAR_RANK_TO_INT_RANK = OrderedDict(zip(RANKS, range(0,13)))
 CHAR_SUIT_TO_INT_SUIT = OrderedDict(zip('shdc',[1,2,4,8]))
 
-class Card ():
-    """
+"""
     Static class that handles cards. We represent cards as 32-bit integers, so
     there is no object instantiation - they are just ints. Most of the bits are
     used, and have a specific meaning. See below:
@@ -43,7 +42,9 @@ class Card ():
     - Detect straights
 
     and is also quite performant.
-    """
+"""
+
+class Card ():
     pass
 
 
