@@ -1,6 +1,6 @@
 import time
 import random
-from treys import Card, Deck, Evaluator
+from treys import Deck, Evaluator
 
 def setup(n, m):
     deck = Deck()
