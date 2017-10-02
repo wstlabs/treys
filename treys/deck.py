@@ -1,5 +1,5 @@
 from random import shuffle
-from .card import Card, pretty, RANKS, genseq
+from .card import pretty, genseq
 
 class Deck:
     """
