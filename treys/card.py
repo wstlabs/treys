@@ -73,11 +73,10 @@ class Card ():
 
         return bitrank | suit | rank | rank_prime
 
-    @staticmethod
-    def int_to_str(card):
-        rank = get_rank_int(card)
-        suit = get_suit_int(card)
-        return Card.STR_RANKS[rank] + Card.INT_SUIT_TO_CHAR_SUIT[suit]
+def int_to_str(card):
+    rank = get_rank_int(card)
+    suit = get_suit_int(card)
+    return Card.STR_RANKS[rank] + Card.INT_SUIT_TO_CHAR_SUIT[suit]
 
 def get_rank_int(card):
     return (card >> 8) & 0xF
