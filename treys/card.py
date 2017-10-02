@@ -199,7 +199,9 @@ def __int_to_binary(card):
     output.reverse()
     return "".join(output)
 
-def hand_to_binary(card_strs):
+# DEPRECATED
+# From the original 'deuces', but never used or tested.
+def __hand_to_binary(card_strs):
     """
     Expects a list of cards as strings and returns a list
     of integers of same length corresponding to those strings.
