@@ -10,6 +10,8 @@ PRETTY = {
 # hearts and diamonds
 REDS = set([2, 4])
 
+PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+
 class Card ():
     """
     Static class that handles cards. We represent cards as 32-bit integers, so
@@ -40,7 +42,6 @@ class Card ():
     # the basics
     STR_RANKS = '23456789TJQKA'
     INT_RANKS = range(13)
-    PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
 
     # converstion from string => int
     CHAR_RANK_TO_INT_RANK = dict(zip(list(STR_RANKS), INT_RANKS))
@@ -65,7 +66,7 @@ class Card ():
         suit_char = string[1]
         rank_int = Card.CHAR_RANK_TO_INT_RANK[rank_char]
         suit_int = Card.CHAR_SUIT_TO_INT_SUIT[suit_char]
-        rank_prime = Card.PRIMES[rank_int]
+        rank_prime = PRIMES[rank_int]
 
         bitrank = 1 << rank_int << 16
         suit = suit_int << 12
@@ -143,7 +144,7 @@ class Card ():
         for i in Card.INT_RANKS:
             # if the ith bit is set
             if rankbits & (1 << i):
-                product *= Card.PRIMES[i]
+                product *= PRIMES[i]
         return product
 
 

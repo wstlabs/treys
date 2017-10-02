@@ -1,6 +1,6 @@
 import itertools
 from collections import OrderedDict
-from .card import Card
+from .card import Card, PRIMES
 
 class LookupTable(object):
     """
@@ -170,7 +170,7 @@ class LookupTable(object):
             kickers = list(backwards_ranks)
             kickers.remove(i)
             for k in kickers:
-                product = Card.PRIMES[i]**4 * Card.PRIMES[k]
+                product = PRIMES[i]**4 * PRIMES[k]
                 self.unsuited[product] = rank
                 rank += 1
 
@@ -185,7 +185,7 @@ class LookupTable(object):
             pairranks = list(backwards_ranks)
             pairranks.remove(i)
             for pr in pairranks:
-                product = Card.PRIMES[i]**3 * Card.PRIMES[pr]**2
+                product = PRIMES[i]**3 * PRIMES[pr]**2
                 self.unsuited[product] = rank
                 rank += 1
 
@@ -201,7 +201,7 @@ class LookupTable(object):
             gen = itertools.combinations(kickers, 2)
             for kickers in gen:
                 c1, c2 = kickers
-                product = Card.PRIMES[r]**3 * Card.PRIMES[c1] * Card.PRIMES[c2]
+                product = PRIMES[r]**3 * PRIMES[c1] * PRIMES[c2]
                 self.unsuited[product] = rank
                 rank += 1
 
@@ -216,7 +216,7 @@ class LookupTable(object):
             kickers.remove(pair1)
             kickers.remove(pair2)
             for kicker in kickers:
-                product = Card.PRIMES[pair1]**2 * Card.PRIMES[pair2]**2 * Card.PRIMES[kicker]
+                product = PRIMES[pair1]**2 * PRIMES[pair2]**2 * PRIMES[kicker]
                 self.unsuited[product] = rank
                 rank += 1
 
@@ -232,8 +232,8 @@ class LookupTable(object):
             kgen = itertools.combinations(kickers, 3)
             for kickers in kgen:
                 k1, k2, k3 = kickers
-                product = Card.PRIMES[pairrank]**2 * Card.PRIMES[k1] \
-                        * Card.PRIMES[k2] * Card.PRIMES[k3]
+                product = PRIMES[pairrank]**2 * PRIMES[k1] \
+                        * PRIMES[k2] * PRIMES[k3]
                 self.unsuited[product] = rank
                 rank += 1
 
