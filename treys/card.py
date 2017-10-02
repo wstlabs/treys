@@ -69,7 +69,7 @@ class Card ():
 
         return bitrank | suit | rank | rank_prime
 
-def fresh():
+def genseq():
     """An iterator which yields freshly-minted cards in (rank,suit) order."""
     pass
 
