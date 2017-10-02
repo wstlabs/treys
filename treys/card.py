@@ -107,45 +107,43 @@ class Card ():
             bhand.append(Card.new(c))
         return bhand
 
-    @staticmethod
-    def prime_product_from_hand(card_ints):
-        """
-        Expects a list of cards in integer form.
-        """
-        product = 1
-        for c in card_ints:
-            product *= (c & 0xFF)
-        return product
+def prime_product_from_hand(card_ints):
+    """
+    Expects a list of cards in integer form.
+    """
+    product = 1
+    for c in card_ints:
+        product *= (c & 0xFF)
+    return product
 
-    @staticmethod
-    def prime_product_from_rankbits(rankbits):
-        """
-        Returns the prime product using the bitrank (b)
-        bits of the hand. Each 1 in the sequence is converted
-        to the correct prime and multiplied in.
+def prime_product_from_rankbits(rankbits):
+    """
+    Returns the prime product using the bitrank (b)
+    bits of the hand. Each 1 in the sequence is converted
+    to the correct prime and multiplied in.
 
-        Params:
-            rankbits = a single 32-bit (only 13-bits set) integer representing
-                    the ranks of 5 _different_ ranked cards
-                    (5 of 13 bits are set)
+    Params:
+        rankbits = a single 32-bit (only 13-bits set) integer representing
+                the ranks of 5 _different_ ranked cards
+                (5 of 13 bits are set)
 
-        Primarily used for evaulating flushes and straights,
-        two occasions where we know the ranks are *ALL* different.
+    Primarily used for evaulating flushes and straights,
+    two occasions where we know the ranks are *ALL* different.
 
-        Assumes that the input is in form (set bits):
+    Assumes that the input is in form (set bits):
 
-                              rankbits
-                        +--------+--------+
-                        |xxxbbbbb|bbbbbbbb|
-                        +--------+--------+
+                          rankbits
+                    +--------+--------+
+                    |xxxbbbbb|bbbbbbbb|
+                    +--------+--------+
 
-        """
-        product = 1
-        for i in Card.INT_RANKS:
-            # if the ith bit is set
-            if rankbits & (1 << i):
-                product *= PRIMES[i]
-        return product
+    """
+    product = 1
+    for i in Card.INT_RANKS:
+        # if the ith bit is set
+        if rankbits & (1 << i):
+            product *= PRIMES[i]
+    return product
 
 
 # The next two comment lines were from the original 'deuces':

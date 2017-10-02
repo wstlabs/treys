@@ -1,6 +1,8 @@
 import itertools
 from collections import OrderedDict
-from .card import Card, PRIMES
+from .card import PRIMES
+from .card import prime_product_from_rankbits
+from .card import prime_product_from_hand
 
 class LookupTable(object):
     """
@@ -122,7 +124,7 @@ class LookupTable(object):
         # rank 1 = Royal Flush!
         rank = 1
         for sf in straight_flushes:
-            prime_product = Card.prime_product_from_rankbits(sf)
+            prime_product = prime_product_from_rankbits(sf)
             self.flush[prime_product] = rank
             rank += 1
 
@@ -130,7 +132,7 @@ class LookupTable(object):
         # is the worst rank that a full house can have (2,2,2,3,3)
         rank = LookupTable.MAX_FULL_HOUSE + 1
         for f in flushes:
-            prime_product = Card.prime_product_from_rankbits(f)
+            prime_product = prime_product_from_rankbits(f)
             self.flush[prime_product] = rank
             rank += 1
 
@@ -146,12 +148,12 @@ class LookupTable(object):
         """
         rank = LookupTable.MAX_FLUSH + 1
         for s in straights:
-            prime_product = Card.prime_product_from_rankbits(s)
+            prime_product = prime_product_from_rankbits(s)
             self.unsuited[prime_product] = rank
             rank += 1
         rank = LookupTable.MAX_PAIR + 1
         for h in highcards:
-            prime_product = Card.prime_product_from_rankbits(h)
+            prime_product = prime_product_from_rankbits(h)
             self.unsuited[prime_product] = rank
             rank += 1
 
