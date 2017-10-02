@@ -71,7 +71,9 @@ class Card ():
 
 def genseq():
     """An iterator which yields freshly-minted cards in (rank,suit) order."""
-    pass
+    for r in RANKS:
+        for s in Card.CHAR_SUIT_TO_INT_SUIT.keys():
+            yield Card.new(r+s)
 
 _suit2char = 'xshxdxxxc'
 def suit2char(suit):

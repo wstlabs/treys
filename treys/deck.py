@@ -1,5 +1,5 @@
 from random import shuffle
-from .card import Card, pretty, RANKS
+from .card import Card, pretty, RANKS, genseq
 
 class Deck:
     """
@@ -30,6 +30,10 @@ class Deck:
 
     @staticmethod
     def GetFullDeck():
+        return list(genseq())
+
+    @staticmethod
+    def __GetFullDeck():
         if Deck._FULL_DECK:
             return list(Deck._FULL_DECK)
         # create the standard 52 card deck
