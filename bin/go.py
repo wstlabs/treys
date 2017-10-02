@@ -1,22 +1,22 @@
 from treys import Card, Evaluator, Deck
-from treys.card import pretty
+import treys.card as card
 
 # create a card
-card = Card.make('Qh')
-print(card)
+n = card.make('Qh')
+print(n)
 
 # create a board and hole cards
 board = [
-    Card.make('2h'),
-    Card.make('2s'),
-    Card.make('Jc')
+    card.make('2h'),
+    card.make('2s'),
+    card.make('Jc')
 ]
 hand = [
-    Card.make('Qs'),
-    Card.make('Th')
+    card.make('Qs'),
+    card.make('Th')
 ]
 
-print(pretty(board+hand))
+print(card.pretty(board+hand))
 
 # create an evaluator
 evaluator = Evaluator()
@@ -33,13 +33,13 @@ player1_hand = deck.draw(2)
 player2_hand = deck.draw(2)
 
 print("The board:")
-print(pretty(board))
+print(card.pretty(board))
 
 print("Player 1's cards:")
-print(pretty(player1_hand))
+print(card.pretty(player1_hand))
 
 print("Player 2's cards:")
-print(pretty(player2_hand))
+print(card.pretty(player2_hand))
 
 p1_score = evaluator.evaluate(board, player1_hand)
 p2_score = evaluator.evaluate(board, player2_hand)

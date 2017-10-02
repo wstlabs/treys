@@ -48,33 +48,33 @@ class Card ():
     # the basics
 
     # converstion from string => int
+    pass
 
 
-    @staticmethod
-    def make(string):
-        """
-        Converts Card string to binary integer representation of card, inspired by:
+def make(string):
+    """
+    Converts Card string to binary integer representation of card, inspired by:
 
-        http://www.suffecool.net/poker/evaluator.html
-        """
+    http://www.suffecool.net/poker/evaluator.html
+    """
 
-        rank_char = string[0]
-        suit_char = string[1]
-        rank_int = CHAR_RANK_TO_INT_RANK[rank_char]
-        suit_int = CHAR_SUIT_TO_INT_SUIT[suit_char]
-        rank_prime = PRIMES[rank_int]
+    rank_char = string[0]
+    suit_char = string[1]
+    rank_int = CHAR_RANK_TO_INT_RANK[rank_char]
+    suit_int = CHAR_SUIT_TO_INT_SUIT[suit_char]
+    rank_prime = PRIMES[rank_int]
 
-        bitrank = 1 << rank_int << 16
-        suit = suit_int << 12
-        rank = rank_int << 8
+    bitrank = 1 << rank_int << 16
+    suit = suit_int << 12
+    rank = rank_int << 8
 
-        return bitrank | suit | rank | rank_prime
+    return bitrank | suit | rank | rank_prime
 
 def genseq():
     """An iterator which yields freshly-minted cards in (rank,suit) order."""
     for r in RANKS:
         for s in CHAR_SUIT_TO_INT_SUIT.keys():
-            yield Card.make(r+s)
+            yield make(r+s)
 
 _suit2char = 'xshxdxxxc'
 def suit2char(suit):
@@ -219,6 +219,6 @@ def __hand_to_binary(card_strs):
     """
     bhand = []
     for c in card_strs:
-        bhand.append(Card.make(c))
+        bhand.append(make(c))
     return bhand
 
