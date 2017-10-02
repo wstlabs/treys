@@ -2,18 +2,18 @@ from treys import Card, Evaluator, Deck
 from treys.card import pretty
 
 # create a card
-card = Card.new('Qh')
+card = Card.make('Qh')
 print(card)
 
 # create a board and hole cards
 board = [
-    Card.new('2h'),
-    Card.new('2s'),
-    Card.new('Jc')
+    Card.make('2h'),
+    Card.make('2s'),
+    Card.make('Jc')
 ]
 hand = [
-    Card.new('Qs'),
-    Card.new('Th')
+    Card.make('Qs'),
+    Card.make('Th')
 ]
 
 print(pretty(board+hand))

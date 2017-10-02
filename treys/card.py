@@ -50,7 +50,7 @@ class Card ():
 
 
     @staticmethod
-    def new(string):
+    def make(string):
         """
         Converts Card string to binary integer representation of card, inspired by:
 
@@ -73,7 +73,7 @@ def genseq():
     """An iterator which yields freshly-minted cards in (rank,suit) order."""
     for r in RANKS:
         for s in Card.CHAR_SUIT_TO_INT_SUIT.keys():
-            yield Card.new(r+s)
+            yield Card.make(r+s)
 
 _suit2char = 'xshxdxxxc'
 def suit2char(suit):
@@ -218,6 +218,6 @@ def __hand_to_binary(card_strs):
     """
     bhand = []
     for c in card_strs:
-        bhand.append(Card.new(c))
+        bhand.append(Card.make(c))
     return bhand
 
