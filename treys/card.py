@@ -69,6 +69,10 @@ class Card ():
 
         return bitrank | suit | rank | rank_prime
 
+def fresh():
+    """An iterator which yields freshly-minted cards in (rank,suit) order."""
+    pass
+
 
 def get_rank_int(card):
     return (card >> 8) & 0xF
