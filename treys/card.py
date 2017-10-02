@@ -44,10 +44,6 @@ class Card ():
 
     and is also quite performant.
     """
-
-    # the basics
-
-    # converstion from string => int
     pass
 
 
