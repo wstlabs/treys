@@ -117,7 +117,7 @@ class Evaluator(object):
 
     def hand_summary(self, board, hands):
         """
-        Gives a sumamry of the hand with ranks as time proceeds.
+        Gives a summary of the hand with ranks as time proceeds.
 
         Requires that the board is in chronological order for the
         analysis to make sense.
