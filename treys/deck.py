@@ -14,7 +14,7 @@ class Deck:
 
     def shuffle(self):
         # and then shuffle
-        self.cards = Deck.GetFullDeck()
+        self.cards = Deck.fresh()
         shuffle(self.cards)
 
     def draw(self, n=1):
@@ -29,16 +29,7 @@ class Deck:
         return pretty(self.cards)
 
     @staticmethod
-    def GetFullDeck():
+    def fresh():
+        """Returns a newly minted deck, in canonical order."""
         return list(genseq())
 
-    @staticmethod
-    def __GetFullDeck():
-        if Deck._FULL_DECK:
-            return list(Deck._FULL_DECK)
-        # create the standard 52 card deck
-        for rank in RANKS:
-            # XXX dict iter
-            for suit,val in Card.CHAR_SUIT_TO_INT_SUIT.items():
-                Deck._FULL_DECK.append(Card.new(rank + suit))
-        return list(Deck._FULL_DECK)
