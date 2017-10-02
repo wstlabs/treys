@@ -22,12 +22,17 @@ class Deck:
         self.cards = Deck.fresh()
         shuffle(self.cards)
 
+    def pick(self):
+        if len(self) < 1:
+            raise RuntimeError("can't pick from an empty deck")
+        return self.cards.pop()
+
     def draw(self, n=1):
         if n == 1:
             return self.cards.pop(0)
         cards = []
         for i in range(n):
-            cards.append(self.draw())
+            cards.append(self.pick())
         return cards
 
 
