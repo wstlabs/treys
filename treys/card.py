@@ -44,7 +44,7 @@ class Card ():
     INT_RANKS = range(13)
 
     # converstion from string => int
-    CHAR_RANK_TO_INT_RANK = dict(zip(list(STR_RANKS), INT_RANKS))
+    CHAR_RANK_TO_INT_RANK = dict(zip(STR_RANKS, INT_RANKS))
     CHAR_SUIT_TO_INT_SUIT = {
         's' : 1, # spades
         'h' : 2, # hearts
