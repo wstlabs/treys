@@ -1,6 +1,5 @@
 from collections import OrderedDict
 
-# unicode suit chars for pretty printing 
 PRETTY = {
     1 : "\u2660", # spades
     2 : "\u2764", # hearts
@@ -8,7 +7,6 @@ PRETTY = {
     8 : "\u2663"  # clubs
 }
 
-# hearts and diamonds
 REDS = set([2, 4])
 SUITINTS = (1,2,4,8)
 RANKS = '23456789TJQKA'
