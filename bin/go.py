@@ -1,4 +1,4 @@
-from treys import Card, Evaluator, Deck
+from treys import Evaluator, Deck
 import treys.card as card
 
 # create a card
