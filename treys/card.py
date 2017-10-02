@@ -74,26 +74,26 @@ class Card ():
         return bitrank | suit | rank | rank_prime
 
     @staticmethod
-    def int_to_str(card_int):
-        rank_int = Card.get_rank_int(card_int)
-        suit_int = Card.get_suit_int(card_int)
-        return Card.STR_RANKS[rank_int] + Card.INT_SUIT_TO_CHAR_SUIT[suit_int]
+    def int_to_str(card):
+        rank = Card.get_rank_int(card)
+        suit = Card.get_suit_int(card)
+        return Card.STR_RANKS[rank] + Card.INT_SUIT_TO_CHAR_SUIT[suit]
 
     @staticmethod
-    def get_rank_int(card_int):
-        return (card_int >> 8) & 0xF
+    def get_rank_int(card):
+        return (card >> 8) & 0xF
 
     @staticmethod
-    def get_suit_int(card_int):
-        return (card_int >> 12) & 0xF
+    def get_suit_int(card):
+        return (card >> 12) & 0xF
 
     @staticmethod
-    def get_bitrank_int(card_int):
-        return (card_int >> 16) & 0x1FFF
+    def get_bitrank_int(card):
+        return (card >> 16) & 0x1FFF
 
     @staticmethod
-    def get_prime(card_int):
-        return card_int & 0x3F
+    def get_prime(card):
+        return card & 0x3F
 
 
 def prime_product_from_hand(card_ints):
