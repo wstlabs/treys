@@ -15,6 +15,9 @@ class Deck:
     def __len__(self):
         return len(self.cards)
 
+    def __str__(self):
+        return pretty(self.cards)
+
     def shuffle(self):
         # and then shuffle
         self.cards = Deck.fresh()
@@ -28,8 +31,6 @@ class Deck:
             cards.append(self.draw())
         return cards
 
-    def __str__(self):
-        return pretty(self.cards)
 
     @staticmethod
     def fresh():
