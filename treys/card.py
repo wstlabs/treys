@@ -91,7 +91,7 @@ def get_prime(card):
     return card & 0x3F
 
 
-def prime_product_from_hand(cards):
+def product_from_hand(cards):
     """
     Expects a list of cards in integer form.
     """
@@ -100,7 +100,7 @@ def prime_product_from_hand(cards):
         product *= (n & 0xFF)
     return product
 
-def prime_product_from_rankbits(rankbits):
+def product_from_rankbits(rankbits):
     """
     Returns the prime product using the bitrank (b)
     bits of the hand. Each 1 in the sequence is converted

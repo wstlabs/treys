@@ -122,16 +122,16 @@ class LookupTable(object):
         # rank 1 = Royal Flush!
         rank = 1
         for sf in straight_flushes:
-            card.prime_product = card.prime_product_from_rankbits(sf)
-            self.flush[card.prime_product] = rank
+            product = card.product_from_rankbits(sf)
+            self.flush[product] = rank
             rank += 1
 
         # we start the counting for flushes on max full house, which
         # is the worst rank that a full house can have (2,2,2,3,3)
         rank = LookupTable.MAX_FULL_HOUSE + 1
         for f in flushes:
-            card.prime_product = card.prime_product_from_rankbits(f)
-            self.flush[card.prime_product] = rank
+            product = card.product_from_rankbits(f)
+            self.flush[product] = rank
             rank += 1
 
         # we can reuse these bit sequences for straights
@@ -146,13 +146,13 @@ class LookupTable(object):
         """
         rank = LookupTable.MAX_FLUSH + 1
         for s in straights:
-            card.prime_product = card.prime_product_from_rankbits(s)
-            self.unsuited[card.prime_product] = rank
+            product = card.product_from_rankbits(s)
+            self.unsuited[product] = rank
             rank += 1
         rank = LookupTable.MAX_PAIR + 1
         for h in highcards:
-            card.prime_product = card.prime_product_from_rankbits(h)
-            self.unsuited[card.prime_product] = rank
+            product = card.product_from_rankbits(h)
+            self.unsuited[product] = rank
             rank += 1
 
     def build_multiples(self):

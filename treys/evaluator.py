@@ -1,7 +1,7 @@
 import itertools
 from .lookup import LookupTable
-from .card import prime_product_from_rankbits
-from .card import prime_product_from_hand
+from .card import product_from_rankbits
+from .card import product_from_hand
 
 class Evaluator(object):
     """
@@ -43,10 +43,10 @@ class Evaluator(object):
         # if flush
         if cards[0] & cards[1] & cards[2] & cards[3] & cards[4] & 0xF000:
             handOR = (cards[0] | cards[1] | cards[2] | cards[3] | cards[4]) >> 16
-            prime = prime_product_from_rankbits(handOR)
+            prime = product_from_rankbits(handOR)
             return self.lookup.flush[prime]
         else:
-            prime = prime_product_from_hand(cards)
+            prime = product_from_hand(cards)
             return self.lookup.unsuited[prime]
 
     def _six(self, cards):
