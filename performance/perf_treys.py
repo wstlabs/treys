@@ -3,6 +3,7 @@ import random
 from treys import Deck, Evaluator
 
 def setup(n, m):
+    assert m > 0
     deck = Deck()
     boards = []
     hands = []
