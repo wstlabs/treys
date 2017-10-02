@@ -1,3 +1,4 @@
+from collections import OrderedDict
 
 # unicode suit chars for pretty printing 
 PRETTY = {
@@ -44,12 +45,7 @@ class Card ():
 
     # converstion from string => int
     CHAR_RANK_TO_INT_RANK = dict(zip(STR_RANKS, range(0,13)))
-    CHAR_SUIT_TO_INT_SUIT = {
-        's' : 1, # spades
-        'h' : 2, # hearts
-        'd' : 4, # diamonds
-        'c' : 8, # clubs
-    }
+    CHAR_SUIT_TO_INT_SUIT = OrderedDict(zip('shdc',[1,2,4,8]))
     INT_SUIT_TO_CHAR_SUIT = 'xshxdxxxc'
 
 
