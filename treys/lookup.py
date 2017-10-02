@@ -1,8 +1,6 @@
 import itertools
 from collections import OrderedDict
-from .card import PRIMES
-from .card import prime_product_from_rankbits
-from .card import prime_product_from_hand
+from . import card
 
 class LookupTable(object):
     """
@@ -124,16 +122,16 @@ class LookupTable(object):
         # rank 1 = Royal Flush!
         rank = 1
         for sf in straight_flushes:
-            prime_product = prime_product_from_rankbits(sf)
-            self.flush[prime_product] = rank
+            card.prime_product = card.prime_product_from_rankbits(sf)
+            self.flush[card.prime_product] = rank
             rank += 1
 
         # we start the counting for flushes on max full house, which
         # is the worst rank that a full house can have (2,2,2,3,3)
         rank = LookupTable.MAX_FULL_HOUSE + 1
         for f in flushes:
-            prime_product = prime_product_from_rankbits(f)
-            self.flush[prime_product] = rank
+            card.prime_product = card.prime_product_from_rankbits(f)
+            self.flush[card.prime_product] = rank
             rank += 1
 
         # we can reuse these bit sequences for straights
@@ -148,13 +146,13 @@ class LookupTable(object):
         """
         rank = LookupTable.MAX_FLUSH + 1
         for s in straights:
-            prime_product = prime_product_from_rankbits(s)
-            self.unsuited[prime_product] = rank
+            card.prime_product = card.prime_product_from_rankbits(s)
+            self.unsuited[card.prime_product] = rank
             rank += 1
         rank = LookupTable.MAX_PAIR + 1
         for h in highcards:
-            prime_product = prime_product_from_rankbits(h)
-            self.unsuited[prime_product] = rank
+            card.prime_product = card.prime_product_from_rankbits(h)
+            self.unsuited[card.prime_product] = rank
             rank += 1
 
     def build_multiples(self):
@@ -172,7 +170,7 @@ class LookupTable(object):
             kickers = list(backwards_ranks)
             kickers.remove(i)
             for k in kickers:
-                product = PRIMES[i]**4 * PRIMES[k]
+                product = card.PRIMES[i]**4 * card.PRIMES[k]
                 self.unsuited[product] = rank
                 rank += 1
 
@@ -187,7 +185,7 @@ class LookupTable(object):
             pairranks = list(backwards_ranks)
             pairranks.remove(i)
             for pr in pairranks:
-                product = PRIMES[i]**3 * PRIMES[pr]**2
+                product = card.PRIMES[i]**3 * card.PRIMES[pr]**2
                 self.unsuited[product] = rank
                 rank += 1
 
@@ -203,7 +201,7 @@ class LookupTable(object):
             gen = itertools.combinations(kickers, 2)
             for kickers in gen:
                 c1, c2 = kickers
-                product = PRIMES[r]**3 * PRIMES[c1] * PRIMES[c2]
+                product = card.PRIMES[r]**3 * card.PRIMES[c1] * card.PRIMES[c2]
                 self.unsuited[product] = rank
                 rank += 1
 
@@ -218,7 +216,7 @@ class LookupTable(object):
             kickers.remove(pair1)
             kickers.remove(pair2)
             for kicker in kickers:
-                product = PRIMES[pair1]**2 * PRIMES[pair2]**2 * PRIMES[kicker]
+                product = card.PRIMES[pair1]**2 * card.PRIMES[pair2]**2 * card.PRIMES[kicker]
                 self.unsuited[product] = rank
                 rank += 1
 
@@ -234,8 +232,8 @@ class LookupTable(object):
             kgen = itertools.combinations(kickers, 3)
             for kickers in kgen:
                 k1, k2, k3 = kickers
-                product = PRIMES[pairrank]**2 * PRIMES[k1] \
-                        * PRIMES[k2] * PRIMES[k3]
+                product = card.PRIMES[pairrank]**2 * card.PRIMES[k1] \
+                        * card.PRIMES[k2] * card.PRIMES[k3]
                 self.unsuited[product] = rank
                 rank += 1
 
