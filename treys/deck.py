@@ -19,7 +19,6 @@ class Deck:
         return pretty(self.cards)
 
     def shuffle(self):
-        # and then shuffle
         self.cards = Deck.fresh()
         shuffle(self.cards)
 
