@@ -11,6 +11,7 @@ PRETTY = {
 # hearts and diamonds
 REDS = set([2, 4])
 SUITINTS = (1,2,4,8)
+RANKS = '23456789TJQKA'
 
 PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
 
@@ -42,7 +43,6 @@ class Card ():
     """
 
     # the basics
-    RANKS = '23456789TJQKA'
 
     # converstion from string => int
     CHAR_RANK_TO_INT_RANK = OrderedDict(zip(RANKS, range(0,13)))
@@ -167,7 +167,7 @@ def _pretty_card(card):
     _colored = _resolve_colored()
     if _colored and suit in REDS:
         s = _colored(s, "red")
-    r = Card.RANKS[rank]
+    r = RANKS[rank]
     return str(r)+str(s)
 
 def _pretty_list(cards):
@@ -187,7 +187,7 @@ def pretty(x):
 def int_to_str(card):
     rank = get_rank_int(card)
     suit = get_suit_int(card)
-    return Card.RANKS[rank] + suit2char(suit)
+    return RANKS[rank] + suit2char(suit)
 
 
 # DEPRECATED

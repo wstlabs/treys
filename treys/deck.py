@@ -1,5 +1,5 @@
 from random import shuffle
-from .card import Card, pretty
+from .card import Card, pretty, RANKS
 
 class Deck:
     """
@@ -33,7 +33,7 @@ class Deck:
         if Deck._FULL_DECK:
             return list(Deck._FULL_DECK)
         # create the standard 52 card deck
-        for rank in Card.RANKS:
+        for rank in RANKS:
             # XXX dict iter
             for suit,val in Card.CHAR_SUIT_TO_INT_SUIT.items():
                 Deck._FULL_DECK.append(Card.new(rank + suit))
