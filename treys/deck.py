@@ -12,6 +12,9 @@ class Deck:
     def __init__(self):
         self.shuffle()
 
+    def __len__(self):
+        return len(self.cards)
+
     def shuffle(self):
         # and then shuffle
         self.cards = Deck.fresh()
