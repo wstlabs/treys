@@ -44,10 +44,6 @@ CHAR_SUIT_TO_INT_SUIT = OrderedDict(zip('shdc',[1,2,4,8]))
     and is also quite performant.
 """
 
-class Card ():
-    pass
-
-
 def make(string):
     """
     Converts Card string to binary integer representation of card, inspired by:
