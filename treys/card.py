@@ -75,25 +75,21 @@ class Card ():
 
     @staticmethod
     def int_to_str(card):
-        rank = Card.get_rank_int(card)
-        suit = Card.get_suit_int(card)
+        rank = get_rank_int(card)
+        suit = get_suit_int(card)
         return Card.STR_RANKS[rank] + Card.INT_SUIT_TO_CHAR_SUIT[suit]
 
-    @staticmethod
-    def get_rank_int(card):
-        return (card >> 8) & 0xF
+def get_rank_int(card):
+    return (card >> 8) & 0xF
 
-    @staticmethod
-    def get_suit_int(card):
-        return (card >> 12) & 0xF
+def get_suit_int(card):
+    return (card >> 12) & 0xF
 
-    @staticmethod
-    def get_bitrank_int(card):
-        return (card >> 16) & 0x1FFF
+def get_bitrank_int(card):
+    return (card >> 16) & 0x1FFF
 
-    @staticmethod
-    def get_prime(card):
-        return card & 0x3F
+def get_prime(card):
+    return card & 0x3F
 
 
 def prime_product_from_hand(cards):
@@ -158,8 +154,8 @@ def _resolve_colored():
 
 def _pretty_card(card):
     """Expects a card in integer form, and returns a nice string for pretty-printing."""
-    suit = Card.get_suit_int(card)
-    rank = Card.get_rank_int(card)
+    suit = get_suit_int(card)
+    rank = get_rank_int(card)
     s = PRETTY[suit]
     _colored = _resolve_colored()
     if _colored and suit in REDS:
