@@ -41,10 +41,10 @@ class Card ():
     """
 
     # the basics
-    STR_RANKS = '23456789TJQKA'
+    RANKS = '23456789TJQKA'
 
     # converstion from string => int
-    CHAR_RANK_TO_INT_RANK = OrderedDict(zip(STR_RANKS, range(0,13)))
+    CHAR_RANK_TO_INT_RANK = OrderedDict(zip(RANKS, range(0,13)))
     CHAR_SUIT_TO_INT_SUIT = OrderedDict(zip('shdc',[1,2,4,8]))
     INT_SUIT_TO_CHAR_SUIT = 'xshxdxxxc'
 
@@ -151,7 +151,7 @@ def _pretty_card(card):
     _colored = _resolve_colored()
     if _colored and suit in REDS:
         s = _colored(s, "red")
-    r = Card.STR_RANKS[rank]
+    r = Card.RANKS[rank]
     return str(r)+str(s)
 
 def _pretty_list(cards):
@@ -171,7 +171,7 @@ def pretty(x):
 def int_to_str(card):
     rank = get_rank_int(card)
     suit = get_suit_int(card)
-    return Card.STR_RANKS[rank] + Card.INT_SUIT_TO_CHAR_SUIT[suit]
+    return Card.RANKS[rank] + Card.INT_SUIT_TO_CHAR_SUIT[suit]
 
 
 # DEPRECATED
