@@ -23,8 +23,6 @@ CHAR_SUIT_TO_INT_SUIT = OrderedDict(zip('shdc',[1,2,4,8]))
     there is no object instantiation - they are just ints. Most of the bits are
     used, and have a specific meaning. See below:
 
-                                    Card:
-
                           bitrank     suit rank   prime
                     +--------+--------+--------+--------+
                     |xxxbbbbb|bbbbbbbb|cdhsrrrr|xxpppppp|
