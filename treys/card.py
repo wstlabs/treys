@@ -139,7 +139,7 @@ def prime_product_from_rankbits(rankbits):
 
     """
     product = 1
-    for i in Card.INT_RANKS:
+    for i in range(0,13):
         # if the ith bit is set
         if rankbits & (1 << i):
             product *= PRIMES[i]
