@@ -10,6 +10,7 @@ PRETTY = {
 
 # hearts and diamonds
 REDS = set([2, 4])
+SUITINTS = (1,2,4,8)
 
 PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
 
@@ -46,7 +47,6 @@ class Card ():
     # converstion from string => int
     CHAR_RANK_TO_INT_RANK = OrderedDict(zip(RANKS, range(0,13)))
     CHAR_SUIT_TO_INT_SUIT = OrderedDict(zip('shdc',[1,2,4,8]))
-    INT_SUIT_TO_CHAR_SUIT = 'xshxdxxxc'
 
 
     @staticmethod
@@ -73,6 +73,18 @@ def fresh():
     """An iterator which yields freshly-minted cards in (rank,suit) order."""
     pass
 
+_suit2char = 'xshxdxxxc'
+def suit2char(suit):
+    if suit in SUITINTS:
+        return _suit2char[suit]
+    else:
+        raise ValueError("invalid suit int")
+
+def char2rank(char):
+    pass
+
+def char2suit(char):
+    pass
 
 def get_rank_int(card):
     return (card >> 8) & 0xF
@@ -175,7 +187,7 @@ def pretty(x):
 def int_to_str(card):
     rank = get_rank_int(card)
     suit = get_suit_int(card)
-    return Card.RANKS[rank] + Card.INT_SUIT_TO_CHAR_SUIT[suit]
+    return Card.RANKS[rank] + suit2char(suit)
 
 
 # DEPRECATED
