@@ -73,10 +73,6 @@ class Card ():
 
         return bitrank | suit | rank | rank_prime
 
-def int_to_str(card):
-    rank = get_rank_int(card)
-    suit = get_suit_int(card)
-    return Card.STR_RANKS[rank] + Card.INT_SUIT_TO_CHAR_SUIT[suit]
 
 def get_rank_int(card):
     return (card >> 8) & 0xF
@@ -175,6 +171,11 @@ def pretty(x):
         return _pretty_list(x)
     else:
         raise TypeError("need a single (integer) card, or a list of cards")
+
+def int_to_str(card):
+    rank = get_rank_int(card)
+    suit = get_suit_int(card)
+    return Card.STR_RANKS[rank] + Card.INT_SUIT_TO_CHAR_SUIT[suit]
 
 
 # DEPRECATED
