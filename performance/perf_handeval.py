@@ -1,4 +1,4 @@
-from treys.card import Card
+import treys.card as card
 from hand_evaluator import HandEvaluator
 import time
 import random
@@ -11,7 +11,9 @@ def setup(n):
     full_deck = []
     for i in range(2, 14 + 1):
         for j in range(1, 4 + 1):
-            full_deck.append(Card(i, j))
+            # method renamed, but signature is in the same
+            # broken form as in the original
+            full_deck.append(Card.make(i, j))
 
     for i in range(n):
         deck = list(full_deck)
