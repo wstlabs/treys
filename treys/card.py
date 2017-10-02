@@ -96,13 +96,13 @@ class Card ():
         return card & 0x3F
 
 
-def prime_product_from_hand(card_ints):
+def prime_product_from_hand(cards):
     """
     Expects a list of cards in integer form.
     """
     product = 1
-    for c in card_ints:
-        product *= (c & 0xFF)
+    for n in cards:
+        product *= (n & 0xFF)
     return product
 
 def prime_product_from_rankbits(rankbits):
