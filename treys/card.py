@@ -95,16 +95,15 @@ class Card ():
     def get_prime(card_int):
         return card_int & 0x3F
 
-    @staticmethod
-    def hand_to_binary(card_strs):
-        """
-        Expects a list of cards as strings and returns a list
-        of integers of same length corresponding to those strings.
-        """
-        bhand = []
-        for c in card_strs:
-            bhand.append(Card.new(c))
-        return bhand
+def hand_to_binary(card_strs):
+    """
+    Expects a list of cards as strings and returns a list
+    of integers of same length corresponding to those strings.
+    """
+    bhand = []
+    for c in card_strs:
+        bhand.append(Card.new(c))
+    return bhand
 
 def prime_product_from_hand(card_ints):
     """
