@@ -13,7 +13,7 @@ def setup(n):
         for j in range(1, 4 + 1):
             # method renamed, but signature is in the same
             # broken form as in the original
-            full_deck.append(Card.make(i, j))
+            full_deck.append(card.make(i, j))
 
     for i in range(n):
         deck = list(full_deck)
