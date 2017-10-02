@@ -1,5 +1,4 @@
 import itertools
-from .deck import Deck
 from .lookup import LookupTable
 from .card import prime_product_from_rankbits
 from .card import prime_product_from_hand
