@@ -7,7 +7,6 @@ class Deck:
     deck with the list of unique card integers. Each object instantiated simply
     makes a copy of this object and shuffles it.
     """
-    _FULL_DECK = []
 
     def __init__(self):
         self.shuffle()
