@@ -34,7 +34,6 @@ class Deck:
             raise ValueError("requested draw size exceeds deck size")
         return [self.cards.pop() for _ in range(k)]
 
-
     @staticmethod
     def fresh():
         """Returns a newly minted deck, in canonical order."""
