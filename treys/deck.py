@@ -20,11 +20,13 @@ class Deck:
         shuffle(self.cards)
 
     def pick(self):
+        """Picks a single card from the deck."""
         if len(self) < 1:
             raise RuntimeError("can't pick from an empty deck")
         return self.cards.pop()
 
     def draw(self, k):
+        """Draws :k cards from the deck."""
         if k < 1:
             raise ValueError("must draw a positive number of cards")
         if k > len(self):
