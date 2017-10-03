@@ -3,9 +3,7 @@ from .card import pretty, genseq
 
 class Deck:
     """
-    Class representing a deck. The first time we create, we seed the static
-    deck with the list of unique card integers. Each object instantiated simply
-    makes a copy of this object and shuffles it.
+    An object representing a brand-new, freshly shuffled deck.
     """
 
     def __init__(self):
