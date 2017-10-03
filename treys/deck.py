@@ -36,6 +36,6 @@ class Deck:
 
     @staticmethod
     def fresh():
-        """Returns a newly minted deck, in canonical order."""
+        """Returns the card sequence corresponding to a freshly a newly minted deck, in canonical order."""
         return list(genseq())
 
