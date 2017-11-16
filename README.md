@@ -7,6 +7,13 @@ originally in Python 2.7 and due to Will Drevo.  The latter was last modified in
    https://github.com/worldveil/deuces
 
 
+Status
+======
+
+Currently the project is *in development* (in the midst of a porting phase from 2 => 3), and not recommended for
+downloading and testing (let alone production).  We'll let you know when that changes.
+
+
 License
 =======
 
