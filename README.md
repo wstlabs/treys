@@ -9,9 +9,9 @@ originally in Python 2.7 and due to Will Drevo.  The latter was last modified in
 
 Status
 ======
+In early development stages, and in the midst of a comprehensive porting phase (from 2 => 3).  Which has been on hold for several months.
 
-Currently the project is *in development* (in the midst of a porting phase from 2 => 3), and not recommended for
-downloading and testing (let alone production).  We'll let you know when that changes.
+Until then, definitely not recommended for production (or personal) use.
 
 
 License
