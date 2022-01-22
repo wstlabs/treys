@@ -1,6 +1,6 @@
 Bugs and other annoyances.
 
 performance/
-  - 'perf_handeval.py' and'perf_specialk.py' scripts have external dependencies 
+  - 'perf_handeval.py' and 'perf_specialk.py' scripts have external dependencies 
     which need to be noted in the documentation and/or setup.py
 
